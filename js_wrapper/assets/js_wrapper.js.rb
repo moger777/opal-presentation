@@ -1,0 +1,3 @@
+class JSWrapper
+end
+
