@@ -31,5 +31,17 @@ describe JSWrapper do
     wrapper.call_method("pass")
     expect(arg_passed).to eq("pass")
   end
+
+  it "works with simple return values" do
+    js_object = %x| {
+        call_method: function() {
+          return "pass";
+        }
+      }
+    |
+    wrapper = JSWrapper.new(js_object)
+    return_value = wrapper.call_method
+    expect(return_value).to eq("pass")
+  end
 end
 
