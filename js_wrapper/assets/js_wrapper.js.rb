@@ -11,8 +11,8 @@ class JSWrapper
         return names;
       })()
     `.each do |method_name|
-      define_singleton_method method_name do
-        `js_object[method_name].call(js_object)`
+      define_singleton_method method_name do |*args|
+        `js_object[method_name].apply(js_object, args)`
       end
     end
   end
