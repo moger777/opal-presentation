@@ -60,5 +60,31 @@ describe JSWrapper do
     return_value = wrapper.call_method
     expect(return_value.another_method).to eq("pass")
   end
+
+  it "returns nil inplace of undefined" do
+    js_object = %x| {
+        call_method: function() {
+          return void(0);
+        }
+      }
+    |
+
+    wrapper = JSWrapper.new(js_object)
+    returned_value = wrapper.call_method
+    expect(returned_value).to be(nil)
+  end
+
+  it "returns nil inplace of null" do
+    js_object = %x| {
+        call_method: function() {
+          return null;
+        }
+      }
+    |
+
+    wrapper = JSWrapper.new(js_object)
+    returned_value = wrapper.call_method
+    expect(returned_value).to be(nil)
+  end
 end
 

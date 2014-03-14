@@ -12,8 +12,8 @@ class JSWrapper
       })()
     `.each do |method_name|
       define_singleton_method method_name do |*args|
-        returned_value = `js_object[method_name].apply(js_object, args)`
-        opal_compatible = `returned_value && returned_value.$class ? true : false`
+        returned_value = `js_object[method_name].apply(js_object, args) || Opal.nil`
+        opal_compatible = `returned_value.$class ? true : false`
 
         if opal_compatible
           returned_value
