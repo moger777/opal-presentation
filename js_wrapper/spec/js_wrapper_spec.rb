@@ -43,5 +43,22 @@ describe JSWrapper do
     return_value = wrapper.call_method
     expect(return_value).to eq("pass")
   end
+
+  it "wraps non opal compatible objects in JSWrapper" do
+    js_object = %x| {
+        call_method: function() {
+          return {
+            another_method: function() {
+              return "pass";
+            }
+          }
+        }
+      }
+    |
+
+    wrapper = JSWrapper.new(js_object)
+    return_value = wrapper.call_method
+    expect(return_value.another_method).to eq("pass")
+  end
 end
 
