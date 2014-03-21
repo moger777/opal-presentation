@@ -86,5 +86,18 @@ describe JSWrapper do
     returned_value = wrapper.call_method
     expect(returned_value).to be(nil)
   end
+
+  it "returns false" do
+    js_object = %x| {
+        call_method: function() {
+          return false;
+        }
+      }
+    |
+
+    wrapper = JSWrapper.new(js_object)
+    returned_value = wrapper.call_method
+    expect(returned_value).to be(false)
+  end
 end
 
