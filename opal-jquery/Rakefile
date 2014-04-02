@@ -1,0 +1,9 @@
+require 'bundler'
+Bundler.require
+
+require 'rake/sprocketstask'
+
+Rake::SprocketsTask.new do |t|
+  t.output = 'public/assets'
+  t.assets = ['assets/application.js']
+end
