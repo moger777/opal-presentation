@@ -21,4 +21,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  opal
+  opal (~> 0.6.0)
