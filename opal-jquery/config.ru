@@ -6,7 +6,7 @@ use Rack::Static
 omg_fail = Proc.new do |env|
   request = Rack::Request.new(env)
 
-  if request.path.match /fail/
+  if request.path.match /^\/fail/
     [500, { 'Content-Type' => 'text/html' }, ["<h1>Oh Noes!</h1>"] ]
   else
     [404]
