@@ -1,0 +1,22 @@
+<%= form_for @user, url: signup_path, method: 'post' do |f| %>
+  <p>
+    <label>
+      Username:
+      <%= f.text_field :name %>
+    </label>
+  </p>
+  <p>
+    <label>
+      Password:
+      <%= f.password_field :password %>
+    </label>
+    <div id='password_errors'>
+      <% @user.errors[:password].each do |message| %>
+        <p style='color: red;'><%= message %></p>
+      <% end %>
+    </div>
+  </p>
+  <p>
+    <%= f.submit "Signup" %>
+  </p>
+<% end %>
