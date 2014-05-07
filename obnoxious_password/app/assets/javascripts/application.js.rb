@@ -9,6 +9,7 @@ Document.ready? do
 
   password_field.on(:keyup) do |event|
     password_errors.html = ''
+    return if password_field.value.to_s.match /^\s*$/
 
     PasswordValidator.validate_password(password_field.value).each do |error|
       password_errors.append "<p style='color: red;'>#{error}</p>"

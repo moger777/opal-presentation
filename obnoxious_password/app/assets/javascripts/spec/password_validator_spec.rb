@@ -1,0 +1,1 @@
+../../../../spec/lib/password_validator_spec.rb

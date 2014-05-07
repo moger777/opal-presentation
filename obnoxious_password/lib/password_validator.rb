@@ -1,6 +1,5 @@
 module PasswordValidator
   def self.validate_password(password)
-    puts password
     [].tap do |errors|
       errors << 'must contain number' unless password.match /\d/
       errors << 'must contain uppercase letter' unless password.match /[A-Z]/
