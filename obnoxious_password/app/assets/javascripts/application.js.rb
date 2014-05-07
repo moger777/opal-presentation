@@ -2,6 +2,8 @@ require 'opal'
 require 'jquery'
 require 'opal-jquery'
 require 'password_validator'
+require 'error_message.opalerb'
+require 'ostruct'
 
 Document.ready? do
   password_field = Element.find('#user_password')
@@ -12,7 +14,8 @@ Document.ready? do
     return if password_field.value.to_s.match /^\s*$/
 
     PasswordValidator.validate_password(password_field.value).each do |error|
-      password_errors.append "<p style='color: red;'>#{error}</p>"
+      message_struct = OpenStruct.new(message: error)
+      password_errors.append Template['error_message'].render(message_struct)
     end
   end
 end

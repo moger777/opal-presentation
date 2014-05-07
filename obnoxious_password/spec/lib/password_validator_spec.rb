@@ -53,4 +53,13 @@ describe PasswordValidator do
     expect('321').to cause_error(error_message)
     expect('acb').to_not cause_error(error_message)
   end
+
+  it "should enforce that same letters don't repeat 3 times in a row" do
+    error_message = 'must not have more than 3 of the same character in a row'
+
+    expect('aaa').to cause_error(error_message)
+    expect('AAA').to cause_error(error_message)
+    expect('111').to cause_error(error_message)
+    expect('112').to_not cause_error(error_message)
+  end
 end

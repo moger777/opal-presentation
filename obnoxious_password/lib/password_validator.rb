@@ -9,6 +9,19 @@ module PasswordValidator
 
       check_sequentials(errors, password)
       check_sequentials(errors, password.reverse)
+      check_three_in_row(errors, password)
+    end
+  end
+
+  def self.check_three_in_row(errors, password)
+    password.each_char.each_with_index do |char, index|
+      next_two = password[index + 1, 2]
+      has_three_in_row = char == next_two[0] && char == next_two[1]
+
+      if has_three_in_row
+        errors << 'must not have more than 3 of the same character in a row'
+        return
+      end
     end
   end
 
@@ -19,7 +32,7 @@ module PasswordValidator
 
       if has_sequentials
         errors << 'must not have more than 3 sequential characters'
-        break
+        return
       end
     end
   end

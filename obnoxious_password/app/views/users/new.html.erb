@@ -12,7 +12,7 @@
     </label>
     <div id='password_errors'>
       <% @user.errors[:password].each do |message| %>
-        <p style='color: red;'><%= message %></p>
+        <%= render partial: 'shared/error_message', locals: { message: message } %>
       <% end %>
     </div>
   </p>
