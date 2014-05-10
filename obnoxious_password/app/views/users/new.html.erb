@@ -1,22 +1,28 @@
 <%= form_for @user, url: signup_path, method: 'post' do |f| %>
-  <p>
-    <label>
-      Username:
-      <%= f.text_field :name %>
-    </label>
-  </p>
-  <p>
-    <label>
-      Password:
-      <%= f.password_field :password %>
-    </label>
-    <div id='password_errors'>
-      <% @user.errors[:password].each do |message| %>
-        <%= render partial: 'shared/error_message', locals: { message: message } %>
-      <% end %>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <label>
+        Username:
+        <%= f.text_field :name %>
+      </label>
     </div>
-  </p>
-  <p>
-    <%= f.submit "Signup" %>
-  </p>
+  </div>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <label>
+        Password:
+        <%= f.password_field :password %>
+      </label>
+      <div id='password_errors'>
+        <% @user.errors[:password].each do |message| %>
+          <%= render partial: 'shared/error_message', locals: { message: message } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='large-12 columns'>
+      <%= f.submit "Signup" %>
+    </div>
+  </div>
 <% end %>
