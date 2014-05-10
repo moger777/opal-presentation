@@ -1,5 +1,4 @@
 require 'opal'
-require 'jquery'
 require 'opal-jquery'
 require 'password_validator'
 require 'error_message.opalerb'

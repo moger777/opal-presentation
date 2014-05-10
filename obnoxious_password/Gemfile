@@ -14,3 +14,5 @@ gem 'opal-rails'
 gem 'opal-jquery'
 
 gem 'rspec-rails'
+
+gem 'foundation-rails'
